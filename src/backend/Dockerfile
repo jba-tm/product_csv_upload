@@ -23,6 +23,5 @@ COPY ./ /app/
 ENV PYTHONPATH=/app
 
 RUN chmod +x ./scripts/start.sh
-RUN chmod +x ./scripts/start-reload.sh
 
 CMD ["./scripts/start.sh"]
