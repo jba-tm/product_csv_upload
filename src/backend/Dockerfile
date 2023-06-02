@@ -15,7 +15,7 @@ RUN ./.venv/bin/python3 -m pip install pip setuptools wheel --upgrade
 
 # copy and install pip requirements
 COPY requirements.txt /app/requirements.txt
-RUN /app/.venv/bin/pip3 install -r /home/project/requirements.txt
+RUN /app/.venv/bin/pip3 install -r /app/requirements.txt
 # copy Django project files
 COPY ./ /app/
 
