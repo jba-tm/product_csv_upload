@@ -26,7 +26,6 @@ services:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     environment:
       - PORT=${FRONTEND_PORT}
-      - NEXT_PUBLIC_BASE_URL=backend:${BACKEND_GUNICORN_PORT}
     env_file:
       - .env
 
