@@ -26,6 +26,7 @@ services:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     environment:
       - PORT=${FRONTEND_PORT}
+      - NEXT_PUBLIC_BASE_URL=backend":8000"
     env_file:
       - .env
 
