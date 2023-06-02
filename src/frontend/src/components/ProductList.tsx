@@ -138,14 +138,14 @@ const ProductList = () => {
                         </a>
                     </div>
                     <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                        <div>
-                            <p className="text-sm text-gray-700">
-                                Showing <span className="font-medium">{currentPage*itemsPerPage-(itemsPerPage-1)}</span> to <span className="font-medium">
+                        {count>0 && <div>
+                                <p className="text-sm text-gray-700">
+                                    Showing <span className="font-medium">{currentPage*itemsPerPage-(itemsPerPage-1)}</span> to <span className="font-medium">
                                 {currentPage*itemsPerPage}
                             </span> of{' '}
-                                <span className="font-medium">{count}</span> results
-                            </p>
-                        </div>
+                                    <span className="font-medium">{count}</span> results
+                                </p>
+                            </div>}
                         <div>
                             <ReactPaginate
                                     pageCount={Math.ceil(count / itemsPerPage)}
@@ -194,12 +194,12 @@ const ProductList = () => {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="relative max-w-3xl w-full bg-white rounded-lg p-4 overflow-y-auto">
+                            <div className="relative max-w-5xl w-full bg-white rounded-lg p-4 overflow-y-auto">
                                 <Dialog.Title className="text-lg font-bold text-center mb-4">
                                     Product Images - {selectedProduct?.keywords}
                                 </Dialog.Title>
 
-                                <div className="max-h-96 overflow-y-auto">
+                                <div className="max-h-192 overflow-y-auto">
                                     <div className="grid grid-cols-3 gap-4">
                                         {selectedProduct?.images.map((image) => (
                                             <div
