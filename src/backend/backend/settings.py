@@ -92,7 +92,7 @@ DATABASES = {
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # },
 
-    'mysql': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': get_secret("MYSQL_DATABASE"),
         'USER': get_secret("MYSQL_USER"),
