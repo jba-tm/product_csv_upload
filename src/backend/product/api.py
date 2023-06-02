@@ -61,7 +61,7 @@ class UploadFileView(generics.CreateAPIView):
             images = []
             for j in range(1, len(row)):
                 url = row[f'Image {j}']
-                if url:
+                if url and not pd.isna(url):
                     image_data = {
                         'product_id': product.id,
                         'score': '',  # Leave it blank as per your requirement
@@ -74,4 +74,8 @@ class UploadFileView(generics.CreateAPIView):
 
             # Update the product's image relation
             product.images.set(images)
-        return Response("File uploaded successfully.", status=status.HTTP_201_CREATED)
+        return Response(
+            {"message": "File uploaded successfully."},
+            status=status.HTTP_201_CREATED,
+            content_type="application/json"
+        )
