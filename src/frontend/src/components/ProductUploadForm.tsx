@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+const basUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 function ProductUploadForm() {
     const [dragging, setDragging] = useState(false);
@@ -49,7 +50,7 @@ function ProductUploadForm() {
             setUploadSuccess(false);
             setUploadError(null);
 
-            fetch('http://localhost:8000/api/upload/', {
+            fetch(`${basUrl}/api/upload/`, {
                 method: 'POST',
                 body: formData,
             })
