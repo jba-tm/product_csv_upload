@@ -6,3 +6,4 @@ mysqlclient==2.1.1
 django-cors-headers
 gunicorn
 python-dotenv
+pandas
