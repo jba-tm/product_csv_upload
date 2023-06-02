@@ -29,6 +29,8 @@ services:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     environment:
       - PORT=${FRONTEND_PORT}
+    env_file:
+      - .env
 
   db:
     container_name: ${STACK_NAME?Variable not set}_db
@@ -47,6 +49,8 @@ services:
       - mysql-data:/var/lib/mysql:rw # persistent volume
       #- mysql-data-ram:/var/lib/mysql:rw # ram/memory volume
       - ./my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf # config mysql server
+    env_file:
+      - .env
 
   adminer:
     container_name: ${STACK_NAME?Variable not set}_adminer
