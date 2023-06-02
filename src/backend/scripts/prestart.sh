@@ -7,4 +7,4 @@ else [ -f ./venv/bin/python ];
 fi
 PYTHON_VENV_PATH=${DEFAULT_PYTHON_VENV_PATH:-$DEFAULT_PYTHON_VENV_PATH}
 ## Run migrations
-#${PYTHON_VENV_PATH}python manage.py migrate
+${PYTHON_VENV_PATH}python manage.py migrate
