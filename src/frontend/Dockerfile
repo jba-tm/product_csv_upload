@@ -37,6 +37,8 @@ FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
+ARG NEXT_PUBLIC_ENV_VARIABLE
+ENV NEXT_PUBLIC_ENV_VARIABLE=${NEXT_PUBLIC_ENV_VARIABLE}
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
