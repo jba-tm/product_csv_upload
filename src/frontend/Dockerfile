@@ -51,11 +51,4 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 
 USER nextjs
 
-WORKDIR /app
-# Start Next.js based on the preferred package manager
-CMD \
-  if [ -f yarn.lock ]; then yarn start; \
-  elif [ -f package-lock.json ]; then npm run start; \
-  elif [ -f pnpm-lock.yaml ]; then pnpm start; \
-  else yarn start; \
-  fi
+CMD ["node", "server.js"]
