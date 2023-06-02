@@ -3,9 +3,9 @@
 
 set -e
 
-if [ -f ./app/main.py ]; then
+if [ -f ./backend/wsgi.py ]; then
     DEFAULT_MODULE_NAME=backend.wsgi
-elif [ -f ./main.py ]; then
+elif [ -f ./wsgi.py ]; then
     DEFAULT_MODULE_NAME=wsgi
 fi
 MODULE_NAME=${MODULE_NAME:-$DEFAULT_MODULE_NAME}
@@ -33,17 +33,12 @@ else
 fi
 echo "$APP_MODULE"
 
-if ! command -v "poetry" > /dev/null; then
-  if [ -f ./.venv/bin/python ]; then
-      DEFAULT_PYTHON_VENV_PATH=./.venv/bin/
-  else [ -f ./venv/bin/python ];
-      DEFAULT_PYTHON_VENV_PATH=./venv/bin/
-  fi
-  PYTHON_VENV_PATH=${DEFAULT_PYTHON_VENV_PATH:-$DEFAULT_PYTHON_VENV_PATH}
-
-  # Start Gunicorn
-   ${PYTHON_VENV_PATH}gunicorn -c "$GUNICORN_CONF" "$APP_MODULE" -w 1
-
-else
-   poetry run gunicorn -c "$GUNICORN_CONF" "$APP_MODULE" -w 1
+if [ -f ./.venv/bin/python ]; then
+    DEFAULT_PYTHON_VENV_PATH=./.venv/bin/
+else [ -f ./venv/bin/python ];
+    DEFAULT_PYTHON_VENV_PATH=./venv/bin/
 fi
+PYTHON_VENV_PATH=${DEFAULT_PYTHON_VENV_PATH:-$DEFAULT_PYTHON_VENV_PATH}
+
+# Start Gunicorn
+ ${PYTHON_VENV_PATH}gunicorn -c "$GUNICORN_CONF" "$APP_MODULE" -w 1
