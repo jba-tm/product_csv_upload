@@ -42,7 +42,7 @@ if ! command -v "poetry" > /dev/null; then
   PYTHON_VENV_PATH=${DEFAULT_PYTHON_VENV_PATH:-$DEFAULT_PYTHON_VENV_PATH}
 
   # Start Gunicorn
-   {$PYTHON_VENV_PATH}gunicorn -c "$GUNICORN_CONF" "$APP_MODULE" -w 1
+   ${PYTHON_VENV_PATH}gunicorn -c "$GUNICORN_CONF" "$APP_MODULE" -w 1
 
 else
    poetry run gunicorn -c "$GUNICORN_CONF" "$APP_MODULE" -w 1
